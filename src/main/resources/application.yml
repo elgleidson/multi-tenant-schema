@@ -1,0 +1,47 @@
+server:
+  port: 8090
+
+logging: 
+  level:
+    root: INFO
+    com.github.elgleidson.multi.tenant.schema: DEBUG
+
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5432/multi-tenant?currentSchema=core
+    username: multi-tenant
+    password: multi-tenant
+  jpa:
+    database: postgresql
+    show-sql: true
+    properties:
+      hibernate.dialect: org.hibernate.dialect.PostgreSQL95Dialect
+      # disable jdbc metadata (avoid the exception: PgConnection.createClob() is not yet implemented)
+      hibernate.temp.use_jdbc_metadata_defaults: false
+  jackson:
+    serialization:
+      write-dates-as-timestamps: false
+      write-date-timestamps-as-nanoseconds: false
+  liquibase:
+    change-log: classpath:/db/changelog/db.changelog-core.xml
+    default-schema: core
+
+management:
+  endpoint:
+    beans:
+      enabled: true
+  endpoints:
+    enabled-by-default: true
+    web:
+      base-path: /management
+      exposure:
+        include: "*"
+
+app:
+  security:
+    authentication:
+      jwt:
+        # https://www.base64encode.org/
+        secret-key: ZGVtbw== 
+        expiration-in-seconds: 86400 
+
