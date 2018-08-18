@@ -7,12 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.env.ConfigurableEnvironment;
 
 @SpringBootApplication
-public class MultiTenantSecurityApp {
+public class MultiTenantSchemaApp {
 
-    private static final Logger log = LoggerFactory.getLogger(MultiTenantSecurityApp.class);
+    private static final Logger log = LoggerFactory.getLogger(MultiTenantSchemaApp.class);
     
     public static void main(String[] args) {
-    	SpringApplication app = new SpringApplication(MultiTenantSecurityApp.class);
+    	SpringApplication app = new SpringApplication(MultiTenantSchemaApp.class);
         ConfigurableEnvironment env = app.run(args).getEnvironment();
         log.info("\n------------------------------------------\n" +
         		"Application '{}' is running at localhost:{}\n" + 

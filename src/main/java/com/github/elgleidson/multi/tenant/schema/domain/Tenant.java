@@ -19,6 +19,14 @@ public class Tenant {
 	@Column(nullable=false)
 	private String schema;
 	
+	public Tenant() {
+		
+	}
+	
+	public Tenant(String schema) {
+		this.schema = schema;
+	}
+	
 	public Long getId() {
 		return id;
 	}

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Component;
 import com.github.elgleidson.multi.tenant.schema.domain.Role;
 import com.github.elgleidson.multi.tenant.schema.domain.Tenant;
 import com.github.elgleidson.multi.tenant.schema.domain.User;
+import com.github.elgleidson.multi.tenant.schema.multitenant.TenantContextHolder;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -36,6 +37,7 @@ public class JwtTokenProvider {
 	private long jwtExpirationInSeconds;
 	
 	public String generateToken(Authentication authentication) {
+		log.debug("Generating JWT token for authentication {}", authentication);
 		Date now = new Date();
 		Date validity = new Date(now.getTime() + (jwtExpirationInSeconds * 1000));
 		
@@ -48,7 +50,7 @@ public class JwtTokenProvider {
 			.claim("username", user.getUsername())
 			.claim("email", user.getEmail())
 			.claim("roles", perfis)
-			.claim("tenant", user.getTenant())
+			.claim("tenant", user.getTenant().getSchema())
 			.setIssuedAt(now)
 			.setExpiration(validity)
 			.signWith(SignatureAlgorithm.HS512, jwtSecretKey)
@@ -56,13 +58,16 @@ public class JwtTokenProvider {
 	}
 	
 	public Authentication getAuthentication(String authToken) {
+		log.debug("Getting authentication for JWT token {}", authToken);
 		Claims claims = Jwts.parser().setSigningKey(jwtSecretKey).parseClaimsJws(authToken).getBody();
 		User user = new User();
 		user.setId(Long.parseLong(claims.getSubject()));
 		user.setUsername(claims.get("username").toString());
 		user.setEmail(claims.get("email").toString());
-		user.setTenant((Tenant) claims.get("tenant"));
+		String schema = claims.get("tenant").toString();
+		user.setTenant(new Tenant(schema));
 		List<Role> perfis = Arrays.stream(claims.get("roles").toString().split(",")).map(Role::new).collect(Collectors.toList());
+		TenantContextHolder.setCurrentSchema(schema);
 		return new UsernamePasswordAuthenticationToken(user, authToken, perfis);
 	}
 	

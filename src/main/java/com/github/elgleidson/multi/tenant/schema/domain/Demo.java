@@ -7,6 +7,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.SequenceGenerator;
 
+import com.github.elgleidson.multi.tenant.schema.audit.AbstractAuditableEntity;
+
 @Entity
 public class Demo extends AbstractAuditableEntity {
 

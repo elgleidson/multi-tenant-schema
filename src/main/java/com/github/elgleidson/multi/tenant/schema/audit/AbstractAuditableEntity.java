@@ -1,4 +1,4 @@
-package com.github.elgleidson.multi.tenant.schema.domain;
+package com.github.elgleidson.multi.tenant.schema.audit;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
@@ -23,22 +23,22 @@ public abstract class AbstractAuditableEntity implements Serializable {
 
 	@CreatedDate
 	@JsonIgnore
-	@Column(nullable = false, updatable = false)
+	@Column(name="created_date", nullable = false, updatable = false)
 	private LocalDateTime createdDate;
 	
 	@LastModifiedDate
 	@JsonIgnore
-	@Column
+	@Column(name="last_modified_date")
 	private LocalDateTime lastModifiedDate;
 	
 	@CreatedBy
 	@JsonIgnore
-	@Column(nullable = false, updatable = false)
+	@Column(name="created_by", nullable = false, updatable = false)
 	private Long createdBy;
 	
 	@LastModifiedBy
 	@JsonIgnore
-	@Column
+	@Column(name="last_modified_by")
 	private Long lastModifiedBy;
 
 	public LocalDateTime getCreatedDate() {
