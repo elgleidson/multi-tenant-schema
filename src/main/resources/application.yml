@@ -8,7 +8,7 @@ logging:
 
 spring:
   datasource:
-    url: jdbc:postgresql://localhost:5432/multi-tenant?currentSchema=core
+    url: jdbc:postgresql://localhost:5432/multi-tenant-schema?currentSchema=core
     username: multi-tenant
     password: multi-tenant
   jpa:
