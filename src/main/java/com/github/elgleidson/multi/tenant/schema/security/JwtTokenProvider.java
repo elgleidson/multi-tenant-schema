@@ -15,7 +15,6 @@ import org.springframework.stereotype.Component;
 import com.github.elgleidson.multi.tenant.schema.domain.Role;
 import com.github.elgleidson.multi.tenant.schema.domain.Tenant;
 import com.github.elgleidson.multi.tenant.schema.domain.User;
-import com.github.elgleidson.multi.tenant.schema.multitenant.TenantContextHolder;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -43,6 +42,10 @@ public class JwtTokenProvider {
 		
 		User user = (User) authentication.getPrincipal();
 		String perfis = authentication.getAuthorities().stream().map(auth -> auth.getAuthority()).collect(Collectors.joining(","));
+		String schema = null;
+		if (user.getTenant() != null) {
+			schema = user.getTenant().getSchema();
+		}
 		
 		return Jwts.builder()
 			.setSubject(Long.toString(user.getId()))
@@ -50,7 +53,7 @@ public class JwtTokenProvider {
 			.claim("username", user.getUsername())
 			.claim("email", user.getEmail())
 			.claim("roles", perfis)
-			.claim("tenant", user.getTenant().getSchema())
+			.claim("tenant", schema)
 			.setIssuedAt(now)
 			.setExpiration(validity)
 			.signWith(SignatureAlgorithm.HS512, jwtSecretKey)
@@ -58,16 +61,17 @@ public class JwtTokenProvider {
 	}
 	
 	public Authentication getAuthentication(String authToken) {
-		log.debug("Getting authentication for JWT token {}", authToken);
+		log.debug("Getting authentication for JWT token '{}'", authToken);
 		Claims claims = Jwts.parser().setSigningKey(jwtSecretKey).parseClaimsJws(authToken).getBody();
 		User user = new User();
 		user.setId(Long.parseLong(claims.getSubject()));
 		user.setUsername(claims.get("username").toString());
 		user.setEmail(claims.get("email").toString());
-		String schema = claims.get("tenant").toString();
-		user.setTenant(new Tenant(schema));
 		List<Role> perfis = Arrays.stream(claims.get("roles").toString().split(",")).map(Role::new).collect(Collectors.toList());
-		TenantContextHolder.setCurrentSchema(schema);
+		String schema = (String) claims.get("tenant");
+		if (schema != null) {
+			user.setTenant(new Tenant(schema));
+		}
 		return new UsernamePasswordAuthenticationToken(user, authToken, perfis);
 	}
 	

@@ -102,6 +102,14 @@
     
     <changeSet id="10" author="elgleidson">
     	<insert tableName="users" >
+    		<column name="id">0</column>
+    		<column name="name">Admin</column>
+    		<column name="email">admin@email.com</column>
+    		<column name="username">admin</column>
+    		<column name="password">$2a$04$B5ZguV5CzzHpYvbnHr9il.N.mwF7roikUTz5Xa36evNfJ3khSAiXe</column>
+    		<column name="active">true</column>
+    	</insert>
+    	<insert tableName="users" >
     		<column name="id">1</column>
     		<column name="name">User 1</column>
     		<column name="email">user1@email.com</column>
@@ -122,13 +130,21 @@
     </changeSet>
     
     <changeSet id="11" author="elgleidson">
-    	<insert tableName="user_role" >
-    		<column name="id_user">1</column>
+       	<insert tableName="user_role" >
+    		<column name="id_user">0</column>
     		<column name="id_role">1</column>
     	</insert>
     	<insert tableName="user_role" >
+    		<column name="id_user">0</column>
+    		<column name="id_role">2</column>
+    	</insert>
+    	<insert tableName="user_role" >
+    		<column name="id_user">1</column>
+    		<column name="id_role">2</column>
+    	</insert>
+    	<insert tableName="user_role" >
     		<column name="id_user">2</column>
-    		<column name="id_role">1</column>
+    		<column name="id_role">2</column>
     	</insert>
     </changeSet>
 

@@ -13,6 +13,9 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
+import com.github.elgleidson.multi.tenant.schema.domain.User;
+import com.github.elgleidson.multi.tenant.schema.multitenant.TenantContextHolder;
+
 public class JwtFilter extends OncePerRequestFilter {
 	
 	@Autowired
@@ -25,6 +28,13 @@ public class JwtFilter extends OncePerRequestFilter {
 		if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
 			Authentication authentication = tokenProvider.getAuthentication(jwt);
 			SecurityContextHolder.getContext().setAuthentication(authentication);
+			
+			User user = (User) authentication.getPrincipal();
+			String schema = TenantContextHolder.DEFAULT_SCHEMA;
+			if (user.getTenant() != null) {
+				schema = user.getTenant().getSchema();
+			}
+			TenantContextHolder.setCurrentSchema(schema);
 		}
 		
 		filterChain.doFilter(request, response);

@@ -19,6 +19,8 @@ import javax.validation.constraints.NotBlank;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name="users")
 public class User implements UserDetails {
@@ -43,6 +45,7 @@ public class User implements UserDetails {
 	
 	@NotBlank
 	@Column(nullable=false)
+	@JsonIgnore
 	private String password;
 	
 	@Column
@@ -55,7 +58,7 @@ public class User implements UserDetails {
 	)
 	private Set<Role> roles = new HashSet<>();
 	
-	@OneToOne(optional=false)
+	@OneToOne(optional=true)
 	@JoinColumn(name="id_tenant")
 	private Tenant tenant;
 	
@@ -141,6 +144,7 @@ public class User implements UserDetails {
 	}
 
 	@Override
+	@JsonIgnore
 	public Collection<? extends GrantedAuthority> getAuthorities() {
 		return this.roles;
 	}
