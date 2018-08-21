@@ -5,6 +5,8 @@ logging:
   level:
     root: INFO
     com.github.elgleidson.multi.tenant.schema: DEBUG
+    org.hibernate.SQL: DEBUG
+#    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 spring:
   datasource:
@@ -18,6 +20,7 @@ spring:
       hibernate.dialect: org.hibernate.dialect.PostgreSQL95Dialect
       # disable jdbc metadata (avoid the exception: PgConnection.createClob() is not yet implemented)
       hibernate.temp.use_jdbc_metadata_defaults: false
+      hibernate.format_sql: true
   jackson:
     serialization:
       write-dates-as-timestamps: false
