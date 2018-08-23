@@ -30,12 +30,12 @@ public class Demo extends AbstractAuditableEntity {
         this.id = id;
     }
 
-    public String getDescricao() {
+    public String getDescription() {
         return description;
     }
 
-    public void setDescricao(String descricao) {
-        this.description = descricao;
+    public void setDescription(String description) {
+        this.description = description;
     }
 
 	@Override
