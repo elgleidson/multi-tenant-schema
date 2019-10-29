@@ -3,9 +3,11 @@ package com.github.elgleidson.multi.tenant.schema.domain;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 
 @Entity
+@Table(name = "tenant")
 public class Tenant {
 	
 	@Id
