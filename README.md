@@ -11,7 +11,7 @@ The tenant selection is not made by taking by HTTP header (_"X-Tenant-ID"_ for e
 
 This application has 3 schemas:
 * **schema_core**, default schema used by application to store the _users_, _roles_ and _tenant_ properties.
-* **schema_tenant_1** used by _user1_.
+* **schema_tenant_1**, used by _user1_.
 * **schema_tenant_2**, used by _user2_.
 
 The migration is done by Liquibase, running in a multi tenant mode (_MultiTenantSpringLiquibase_).
