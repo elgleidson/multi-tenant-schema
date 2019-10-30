@@ -5,7 +5,7 @@ import org.slf4j.LoggerFactory;
 
 public class TenantContextHolder {
 	
-	public static final String DEFAULT_SCHEMA = "core";
+	public static final String DEFAULT_SCHEMA = "schema_core";
 
 	private static final Logger log = LoggerFactory.getLogger(TenantContextHolder.class); 
 	private static ThreadLocal<String> currentSchema = new ThreadLocal<>();

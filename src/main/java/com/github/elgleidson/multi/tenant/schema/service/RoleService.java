@@ -9,9 +9,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.elgleidson.multi.tenant.schema.domain.Role;
+import com.github.elgleidson.multi.tenant.schema.domain.core.Role;
 import com.github.elgleidson.multi.tenant.schema.exception.RoleAlreadyExistsException;
-import com.github.elgleidson.multi.tenant.schema.repository.RoleRepository;
+import com.github.elgleidson.multi.tenant.schema.repository.core.RoleRepository;
 
 @Service
 public class RoleService {

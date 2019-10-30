@@ -12,9 +12,9 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Component;
 
-import com.github.elgleidson.multi.tenant.schema.domain.Role;
-import com.github.elgleidson.multi.tenant.schema.domain.Tenant;
-import com.github.elgleidson.multi.tenant.schema.domain.User;
+import com.github.elgleidson.multi.tenant.schema.domain.core.Role;
+import com.github.elgleidson.multi.tenant.schema.domain.core.Tenant;
+import com.github.elgleidson.multi.tenant.schema.domain.core.User;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;

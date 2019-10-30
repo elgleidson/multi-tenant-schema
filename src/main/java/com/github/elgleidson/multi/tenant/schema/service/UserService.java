@@ -15,14 +15,14 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.elgleidson.multi.tenant.schema.domain.Role;
-import com.github.elgleidson.multi.tenant.schema.domain.User;
+import com.github.elgleidson.multi.tenant.schema.domain.core.Role;
+import com.github.elgleidson.multi.tenant.schema.domain.core.User;
 import com.github.elgleidson.multi.tenant.schema.domain.enumeration.RoleName;
 import com.github.elgleidson.multi.tenant.schema.exception.EmailAlreadyExistsException;
 import com.github.elgleidson.multi.tenant.schema.exception.RoleNotExistsException;
 import com.github.elgleidson.multi.tenant.schema.exception.UsernameAlreadyExistsException;
-import com.github.elgleidson.multi.tenant.schema.repository.RoleRepository;
-import com.github.elgleidson.multi.tenant.schema.repository.UserRepository;
+import com.github.elgleidson.multi.tenant.schema.repository.core.RoleRepository;
+import com.github.elgleidson.multi.tenant.schema.repository.core.UserRepository;
 import com.github.elgleidson.multi.tenant.schema.web.dto.RegisterRequest;
 
 @Service

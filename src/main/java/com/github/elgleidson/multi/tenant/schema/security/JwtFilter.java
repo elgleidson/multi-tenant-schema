@@ -13,7 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.util.StringUtils;
 import org.springframework.web.filter.OncePerRequestFilter;
 
-import com.github.elgleidson.multi.tenant.schema.domain.User;
+import com.github.elgleidson.multi.tenant.schema.domain.core.User;
 import com.github.elgleidson.multi.tenant.schema.multitenant.TenantContextHolder;
 
 public class JwtFilter extends OncePerRequestFilter {

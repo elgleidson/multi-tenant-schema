@@ -9,8 +9,8 @@ import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.github.elgleidson.multi.tenant.schema.domain.Demo;
-import com.github.elgleidson.multi.tenant.schema.repository.DemoRepository;
+import com.github.elgleidson.multi.tenant.schema.domain.tentant.Demo;
+import com.github.elgleidson.multi.tenant.schema.repository.tenant.DemoRepository;
 import com.github.elgleidson.multi.tenant.schema.repository.filter.DemoFilter;
 import com.github.elgleidson.multi.tenant.schema.repository.filter.DemoSpecification;
 

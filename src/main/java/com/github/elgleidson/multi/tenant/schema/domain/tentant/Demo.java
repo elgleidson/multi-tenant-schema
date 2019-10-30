@@ -1,4 +1,4 @@
-package com.github.elgleidson.multi.tenant.schema.domain;
+package com.github.elgleidson.multi.tenant.schema.domain.tentant;
 
 import javax.persistence.*;
 

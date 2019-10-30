@@ -10,7 +10,7 @@ import javax.persistence.criteria.Root;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import com.github.elgleidson.multi.tenant.schema.domain.Demo;
+import com.github.elgleidson.multi.tenant.schema.domain.tentant.Demo;
 
 public class DemoSpecification implements Specification<Demo> {
 

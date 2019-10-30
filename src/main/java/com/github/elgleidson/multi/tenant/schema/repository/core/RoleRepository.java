@@ -1,11 +1,11 @@
-package com.github.elgleidson.multi.tenant.schema.repository;
+package com.github.elgleidson.multi.tenant.schema.repository.core;
 
 import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.github.elgleidson.multi.tenant.schema.domain.Role;
+import com.github.elgleidson.multi.tenant.schema.domain.core.Role;
 
 @Repository
 public interface RoleRepository extends JpaRepository<Role, Long> {

@@ -18,7 +18,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.elgleidson.multi.tenant.schema.domain.Role;
+import com.github.elgleidson.multi.tenant.schema.domain.core.Role;
 import com.github.elgleidson.multi.tenant.schema.service.RoleService;
 
 @RestController

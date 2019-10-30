@@ -5,11 +5,12 @@ import java.util.stream.Collectors;
 
 import javax.sql.DataSource;
 
+import com.github.elgleidson.multi.tenant.schema.multitenant.TenantContextHolder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
-import com.github.elgleidson.multi.tenant.schema.domain.Tenant;
-import com.github.elgleidson.multi.tenant.schema.repository.TenantRepository;
+import com.github.elgleidson.multi.tenant.schema.domain.core.Tenant;
+import com.github.elgleidson.multi.tenant.schema.repository.core.TenantRepository;
 
 import liquibase.integration.spring.MultiTenantSpringLiquibase;
 import liquibase.integration.spring.SpringLiquibase;
@@ -22,7 +23,7 @@ public class LiquibaseConfig {
 		SpringLiquibase liquibase = new SpringLiquibase();
 		liquibase.setDataSource(dataSource);
 		liquibase.setChangeLog("classpath:/db/changelog/db.changelog-core.xml");
-		liquibase.setDefaultSchema("core");
+		liquibase.setDefaultSchema(TenantContextHolder.DEFAULT_SCHEMA);
 		liquibase.setShouldRun(true);
 		
 		return liquibase;

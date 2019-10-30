@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.elgleidson.multi.tenant.schema.domain.User;
+import com.github.elgleidson.multi.tenant.schema.domain.core.User;
 import com.github.elgleidson.multi.tenant.schema.security.JwtTokenProvider;
 import com.github.elgleidson.multi.tenant.schema.service.UserService;
 import com.github.elgleidson.multi.tenant.schema.web.dto.ApiResponse;

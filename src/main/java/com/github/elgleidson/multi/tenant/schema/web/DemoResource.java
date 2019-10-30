@@ -18,8 +18,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.github.elgleidson.multi.tenant.schema.domain.Demo;
-import com.github.elgleidson.multi.tenant.schema.domain.User;
+import com.github.elgleidson.multi.tenant.schema.domain.tentant.Demo;
+import com.github.elgleidson.multi.tenant.schema.domain.core.User;
 import com.github.elgleidson.multi.tenant.schema.repository.filter.DemoFilter;
 import com.github.elgleidson.multi.tenant.schema.security.CurrentUser;
 import com.github.elgleidson.multi.tenant.schema.service.DemoService;

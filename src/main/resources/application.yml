@@ -9,11 +9,13 @@ logging:
 #    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
 
 spring:
+  application:
+    name: Multi-Tenant-Schema
   datasource:
-    url: jdbc:postgresql://localhost:5432/multi-tenant-schema?currentSchema=core
+    url: jdbc:postgresql://localhost:5432/multi_tenant_schema?currentSchema=schema_core
 #    url: jdbc:mysql://localhost:3306/core
-    username: multi-tenant
-    password: multi-tenant
+    username: multi_tenant
+    password: multi_tenant
   jpa:
     database: postgresql
 #    database: mysql
@@ -30,7 +32,7 @@ spring:
       write-date-timestamps-as-nanoseconds: false
   liquibase:
     change-log: classpath:/db/changelog/db.changelog-core.xml
-    default-schema: core
+    default-schema: schema_core
 
 management:
   endpoint:

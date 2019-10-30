@@ -1,4 +1,4 @@
-package com.github.elgleidson.multi.tenant.schema.domain;
+package com.github.elgleidson.multi.tenant.schema.domain.core;
 
 import java.util.Collection;
 import java.util.HashSet;
