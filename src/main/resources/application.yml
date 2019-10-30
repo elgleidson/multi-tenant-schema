@@ -13,7 +13,7 @@ spring:
     name: Multi-Tenant-Schema
   datasource:
     url: jdbc:postgresql://localhost:5432/multi_tenant_schema?currentSchema=schema_core
-#    url: jdbc:mysql://localhost:3306/core
+#    url: jdbc:mysql://localhost:3306/schema_core
     username: multi_tenant
     password: multi_tenant
   jpa:
